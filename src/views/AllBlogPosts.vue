@@ -8,7 +8,7 @@
 
                     <h2>{{ post.title }}</h2>
                     <div v-html="post.bericht.slice(0, 200)"></div>
-                    <button>Lees meer</button>
+                    <router-link :to="'/blog/' + post.id"><button>Lees meer</button></router-link>
                 </div>
             </div>
         </div>
@@ -86,6 +86,12 @@ button {
 @media (max-width: 600px) {
     .all-articles {
         grid-template-columns: 1fr 1fr;
+        gap: .5rem;
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
 
         img {
             border-radius: .5rem;

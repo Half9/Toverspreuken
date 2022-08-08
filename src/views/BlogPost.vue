@@ -65,7 +65,7 @@ async function fetchData() {
         }
 
         &::v-deep img {
-            width: 100%;
+            max-width: 100%;
             border-radius: 1rem;
 
         }

@@ -1,5 +1,5 @@
 <template>
-    <HeroSection />
+    <HeroSection v-if="!isLoading" />
     <Loader v-if="isLoading" />
     <div v-if="articles && !isLoading" class="articles">
 
@@ -152,6 +152,12 @@ button {
 @media (max-width: 600px) {
     .rest-articles {
         grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
 
         img {
             border-radius: .5rem;
