@@ -1,6 +1,6 @@
 <template>
   <section class="hero">
-    <img src="../assets/hoed.png" alt="" />
+    <img src="../assets/pot.png" alt="" />
     <div class="hero-text">
       <p>
         Toverspreuken was op de beursvloer een begrip. Na vele jaren met veel
@@ -23,7 +23,8 @@
 }
 
 .hero img {
-  height: 133px;
+  margin-left: 2rem;
+  margin-right: 1rem;
 }
 
 .hero-text {

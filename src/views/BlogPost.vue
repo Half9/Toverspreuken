@@ -2,6 +2,8 @@
     <Loader v-if="isLoading" />
     <div v-if="article && !isLoading" class="article">
         <h2>{{ article.title }}</h2>
+        <img :src="`${imgUrl}${article.cover_img}`" />
+        <div class="text" v-html="article.bericht"></div>
     </div>
 </template>
 
@@ -16,20 +18,58 @@ const router = useRouter();
 const route = useRoute();
 const article = ref(null);
 const isLoading = ref(true)
+const imgUrl = "https://zqsxqnlr.directus.app/assets/"
 
 fetchData();
 async function fetchData() {
     const { id } = route.params;
-    let articleResponse;
     try {
-        articleResponse = await directus.items("toverblog").readOne(id);
+        let articleResponse = await directus.items("toverblog").readOne(id, {
+            filter: {
+                status: {
+                    "_eq": "published"
+                }
+            }
+        });
 
         article.value = articleResponse;
         isLoading.value = false
-        console.log(article.value)
 
-    } catch (err) {
+    } catch (error) {
         router.replace({ name: "NotFound", params: { catchAll: route.path } });
+        console.log("error")
     }
 }
 </script>
+<style scoped lang="scss">
+.article {
+    background-color: var(--licht-gijs);
+    border: 1px solid var(--donker-gijs);
+    border-radius: .5rem;
+
+    h2 {
+        margin: 1rem .5rem;
+        font-size: 2rem;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .text {
+        padding: .5rem 0;
+
+
+        &::v-deep p {
+            margin: 0 .5rem 1rem .5rem;
+        }
+
+        &::v-deep img {
+            width: 100%;
+            border-radius: 1rem;
+
+        }
+    }
+
+}
+</style>

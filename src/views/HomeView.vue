@@ -8,17 +8,17 @@
             <div class="content">
                 <h2>{{ articles[0].title }}</h2>
                 <div class="no-img" v-html="articles[0].bericht.slice(0, 400)"></div>
-                <button>Lees meer</button>
+                <router-link :to="'/blog/' + articles[0].id"><button>Lees meer</button></router-link>
             </div>
         </div>
-        <div class="rest-articles">
+        <div class=" rest-articles">
             <div v-for="post in articles.slice(1)" :key="post.id" class="post">
                 <img :src="`${imgUrl}${post.cover_img}`">
                 <div class="content">
 
                     <h2>{{ post.title }}</h2>
                     <div v-html="post.bericht.slice(0, 200)"></div>
-                    <button>Lees meer</button>
+                    <router-link :to="'/blog/' + post.id"><button>Lees meer</button></router-link>
                 </div>
             </div>
         </div>
@@ -51,7 +51,6 @@ async function fetchData() {
     });
     articles.value = response.data;
     isLoading.value = false
-    console.log(articles.value)
 };
 
 fetchData();

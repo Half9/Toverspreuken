@@ -15,7 +15,7 @@
 nav {
   background-color: var(--donker-gijs);
   border-radius: 0.5rem;
-  margin: 1.5rem 0 2rem 0;
+  margin: 2rem 0;
   padding: 0.5rem;
 }
 
