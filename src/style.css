@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,800;1,400&display=swap');
+:root {
+  --paars: #8c34a2;
+  --donker-paars: #6f1686;
+  --donker-gijs: #1a1a1a;
+  --licht-gijs: #2c2c2c;
+  --bg: #262626;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  color: var(--paars);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+body {
+  background-color: var(--bg);
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+}
+
+.container {
+  max-width: 850px;
+  padding: 0 .2rem;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 0 .5rem;
+  }
+}
+
+button {
+    background-color: var(--paars);
+    border: 0;
+    padding: .5em 1em;
+    color: #FFF;
+    border-radius: .5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--donker-paars);
+    outline: 1px solid var(--donker-paars);
+}
