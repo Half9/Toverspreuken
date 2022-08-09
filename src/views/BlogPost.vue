@@ -20,20 +20,25 @@ const article = ref(null);
 const isLoading = ref(true)
 const imgUrl = "https://zqsxqnlr.directus.app/assets/"
 
+
 fetchData();
 async function fetchData() {
     const { id } = route.params;
     try {
-        let response = await directus.items("toverblog").readOne(id);
+        let response = await directus.items("toverblog").readOne(id, {
+            fields: ["*", "bericht", "cover_img", "title"],
+        });
 
-        article.value = response;
+        article.value = response
         isLoading.value = false
+
 
     } catch (err) {
         router.replace({ name: "NotFound", params: { catchAll: route.path } });
         console.log(err)
     }
 }
+
 </script>
 <style scoped lang="scss">
 .article {
