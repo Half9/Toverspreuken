@@ -120,7 +120,7 @@ fetchData();
 }
 
 @media (max-width: 600px) {
-    .first-article {
+    .first-article .post {
         flex-direction: column;
 
         img {

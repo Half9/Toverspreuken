@@ -19,6 +19,12 @@ nav {
   padding: 0.5rem;
 }
 
+@media (max-width: 600px) {
+  nav {
+    margin: 1rem 0;
+  }
+}
+
 nav ul {
   display: flex;
   gap: 1rem;
