@@ -25,9 +25,7 @@ fetchData();
 async function fetchData() {
     const { id } = route.params;
     try {
-        let response = await directus.items("toverblog").readOne(id, {
-            fields: ["*", "bericht", "cover_img", "title"],
-        });
+        let response = await directus.items("toverblog").readOne(id);
 
         article.value = response
         isLoading.value = false
