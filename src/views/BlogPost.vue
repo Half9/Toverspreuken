@@ -57,11 +57,11 @@ async function fetchData() {
         padding: .5rem 0;
 
 
-        &::v-deep p {
+        &:deep p {
             margin: 0 .5rem 1rem .5rem;
         }
 
-        &::v-deep img {
+        &:deep img {
             max-width: 100%;
             border-radius: 1rem;
 

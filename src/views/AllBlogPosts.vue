@@ -6,7 +6,7 @@
                 <router-link :to="'/blog/' + post.id" class="post">
                     <img :src="`${imgUrl}${post.cover_img}`">
                     <h2>{{ post.title }}</h2>
-                    <div v-html="post.bericht.slice(0, 300)" class="bericht"></div>
+                    <div class="bericht" v-html="post.bericht.slice(0, 300)"></div>
                     <router-link :to="'/blog/' + post.id"><button>Lees meer</button></router-link>
                 </router-link>
             </div>
@@ -83,14 +83,14 @@ button {
         }
 
 
-        &::v-deep p {
+        &:deep p {
             font-weight: 400;
         }
 
         .bericht {
             padding: 0 .5rem;
 
-            &::v-deep img {
+            &:deep img {
                 display: none;
             }
         }
