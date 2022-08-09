@@ -39,4 +39,8 @@ nav li a {
 nav li a:hover {
   color: var(--paars);
 }
+
+.router-link-active {
+  color: var(--paars);
+}
 </style>

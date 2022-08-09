@@ -1,7 +1,8 @@
 <template>
     <footer>
         <div class="logo">
-            <img src="../assets/logo_small.png" alt="Toverspreuken logo" style="height: 30px">
+            <router-link :to="{ name: 'Home' }"><img src="../assets/logo_small.png" alt="Toverspreuken logo"
+                    style="height: 30px"></router-link>
         </div>
         <div class="made">
             <p>Gemaakt door:</p><a href="https://www.jbosch.dev" target="_blank"><img src="../assets/jbosch.png"
@@ -19,7 +20,6 @@ footer {
     padding: .5rem;
     margin-top: 2rem;
     margin-bottom: .2rem;
-
 
     .made {
         display: flex;

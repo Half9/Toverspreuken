@@ -1,30 +1,35 @@
 <template>
-    <HeroSection v-if="!isLoading" />
     <Loader v-if="isLoading" />
+    <HeroSection v-if="!isLoading" />
+
     <div v-if="articles && !isLoading" class="articles">
 
         <div class="first-article">
-            <img :src="`${imgUrl}${articles[0].cover_img}`" />
-            <div class="content">
-                <h2>{{ articles[0].title }}</h2>
-                <div class="no-img" v-html="articles[0].bericht.slice(0, 400)"></div>
-                <router-link :to="'/blog/' + articles[0].id"><button>Lees meer</button></router-link>
-            </div>
-        </div>
-        <div class=" rest-articles">
-            <div v-for="post in articles.slice(1)" :key="post.id" class="post">
-                <img :src="`${imgUrl}${post.cover_img}`">
+            <router-link :to="'/blog/' + articles[0].id" class="post">
+                <img :src="`${imgUrl}${articles[0].cover_img}`" />
                 <div class="content">
-
-                    <h2>{{ post.title }}</h2>
-                    <div v-html="post.bericht.slice(0, 200)"></div>
-                    <router-link :to="'/blog/' + post.id"><button>Lees meer</button></router-link>
+                    <h2>{{ articles[0].title }}</h2>
+                    <div class="no-img" v-html="articles[0].bericht.slice(0, 400)"></div>
+                    <router-link :to="'/blog/' + articles[0].id"><button>Lees meer</button></router-link>
                 </div>
+            </router-link>
+        </div>
+
+        <div class="rest-articles">
+            <div v-for="post in articles.slice(1)" :key="post.id" class="article">
+                <router-link :to="'/blog/' + post.id" class="post">
+                    <img :src="`${imgUrl}${post.cover_img}`">
+                    <h2>{{ post.title }}</h2>
+                    <div v-html="post.bericht.slice(0, 200)" class="bericht"></div>
+                    <router-link :to="'/blog/' + post.id"><button>Lees meer</button></router-link>
+                </router-link>
             </div>
         </div>
+
         <div class="all-articles">
             <router-link :to="{ name: 'Blog' }">Klik hier voor alle blog posts</router-link>
         </div>
+
     </div>
 </template>
 
@@ -42,12 +47,7 @@ const imgUrl = "https://zqsxqnlr.directus.app/assets/"
 async function fetchData() {
     const response = await directus.items("toverblog").readByQuery({
         limit: 7,
-        sort: "-date_created",
-        filter: {
-            status: {
-                "_eq": "published"
-            }
-        }
+        sort: "-date_created"
     });
     articles.value = response.data;
     isLoading.value = false
@@ -58,18 +58,20 @@ fetchData();
 </script>
 
 <style scoped lang="scss">
-button {
-    margin-top: .5rem;
-}
-
 .first-article {
     margin: 2rem 0;
     display: flex;
-    gap: 1rem;
     border-radius: .5rem;
     background-color: var(--licht-gijs);
     border: 1px solid var(--donker-gijs);
     box-shadow: 0 0 50px 0px rgba(0, 0, 0, 0.8);
+
+    .post {
+        display: flex;
+        gap: 1rem;
+    }
+
+
 
     &:hover {
         outline: 2px solid var(--paars);
@@ -84,6 +86,9 @@ button {
 
     .content {
         padding: .5rem;
+        color: #FFF;
+        display: flex;
+        flex-direction: column;
 
         h2 {
             font-size: 1.5rem;
@@ -95,9 +100,22 @@ button {
             margin-bottom: 1rem;
         }
 
+        &::v-deep p {
+            font-weight: 400;
+        }
+
         img {
             display: none;
         }
+
+        button {
+            margin: 1rem 0 .2rem 0;
+        }
+
+        a {
+            text-align: right;
+        }
+
     }
 }
 
@@ -119,22 +137,24 @@ button {
     gap: 2rem;
 
 
-    .post {
+    .article {
         border-radius: .5rem;
         background-color: var(--licht-gijs);
         border: 1px solid var(--donker-gijs);
         box-shadow: 0 0 50px 0px rgba(0, 0, 0, 0.8);
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+
+        .post {
+            color: #FFF;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
 
         &:hover {
             outline: 2px solid var(--paars);
             box-shadow: 0 0 15px 0px rgba(140, 52, 162, 1);
-        }
-
-        .content {
-            padding: .5rem;
         }
 
         img {
@@ -143,8 +163,31 @@ button {
             width: 100%;
         }
 
+        h2 {
+            padding: 0 .5rem;
+            margin: .5rem 0;
+        }
+
+        a a {
+            margin-top: auto;
+            text-align: right;
+        }
+
+
+        &::v-deep p {
+            font-weight: 400;
+        }
+
+        .bericht {
+            padding: 0 .5rem;
+
+            &::v-deep img {
+                display: none;
+            }
+        }
+
         button {
-            margin-bottom: auto;
+            margin: 1rem;
         }
     }
 }
@@ -184,7 +227,7 @@ button {
 
 
 
-.content ::v-deep img {
+.bericht ::v-deep img {
     display: none;
 }
 </style>

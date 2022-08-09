@@ -24,20 +24,14 @@ fetchData();
 async function fetchData() {
     const { id } = route.params;
     try {
-        let articleResponse = await directus.items("toverblog").readOne(id, {
-            filter: {
-                status: {
-                    "_eq": "published"
-                }
-            }
-        });
+        let response = await directus.items("toverblog").readOne(id);
 
-        article.value = articleResponse;
+        article.value = response;
         isLoading.value = false
 
-    } catch (error) {
+    } catch (err) {
         router.replace({ name: "NotFound", params: { catchAll: route.path } });
-        console.log("error")
+        console.log(err)
     }
 }
 </script>
