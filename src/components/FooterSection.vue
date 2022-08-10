@@ -1,11 +1,11 @@
 <template>
     <footer>
         <div class="logo">
-            <router-link :to="{ name: 'Home' }"><img src="../assets/logo_small.png" alt="Toverspreuken logo"
+            <router-link :to="{ name: 'Home' }"><img src="@/assets/logo.svg" alt="Toverspreuken logo"
                     style="height: 30px"></router-link>
         </div>
         <div class="made">
-            <p>Gemaakt door:</p><a href="https://www.jbosch.dev" target="_blank"><img src="../assets/jbosch.png"
+            <p>Gemaakt door:</p><a href="https://www.jbosch.dev" target="_blank"><img src="@/assets/jbosch.svg"
                     alt="JBosch logo" style="height: 28px"></a>
         </div>
     </footer>

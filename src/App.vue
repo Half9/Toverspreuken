@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header>
-      <router-link :to="{ name: 'Home' }"> <img src="@/assets/logo.png" alt="ToverSpreuken logo" /></router-link>
+      <router-link :to="{ name: 'Home' }"> <img src="@/assets/logo.svg" alt="ToverSpreuken logo" /></router-link>
     </header>
     <TopMenu />
     <router-view />
