@@ -91,7 +91,7 @@ button {
             padding: 0 .5rem;
 
             &:deep img {
-                display: none;
+                display: none !important;
             }
         }
 
