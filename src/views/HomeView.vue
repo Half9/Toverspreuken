@@ -9,7 +9,7 @@
                 <img :src="`${imgUrl}${articles[0].cover_img}`" />
                 <div class="content">
                     <h2>{{ articles[0].title }}</h2>
-                    <div class="no-img" v-html="articles[0].bericht.slice(0, 400)"></div>
+                    <div class="bericht" v-html="articles[0].bericht.slice(0, 400)"></div>
                     <router-link :to="'/blog/' + articles[0].id"><button>Lees meer</button></router-link>
                 </div>
             </router-link>
@@ -104,8 +104,8 @@ fetchData();
             font-weight: 400;
         }
 
-        img {
-            display: none;
+        &:deep img {
+            display: none !important;
         }
 
         button {
@@ -178,11 +178,13 @@ fetchData();
             font-weight: 400;
         }
 
+
+
         .bericht {
             padding: 0 .5rem;
 
             &:deep img {
-                display: none;
+                display: none !important;
             }
         }
 
@@ -223,11 +225,5 @@ fetchData();
         }
 
     }
-}
-
-
-
-.bericht:deep img {
-    display: none;
 }
 </style>
