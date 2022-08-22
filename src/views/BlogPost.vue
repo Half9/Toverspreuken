@@ -1,10 +1,13 @@
 <template>
     <Loader v-if="isLoading" />
-    <div v-if="article && !isLoading" class="article">
+    <article v-if="article && !isLoading" class="article">
         <h2>{{ article.title }}</h2>
-        <img :src="`${imgUrl}${article.cover_img}`" />
+        <div class="hero-img" :style="{
+            'background-image': 'url(' + imgUrl + '' + article.cover_img + ')',
+        }"></div>
+        <!-- <img :src="`${imgUrl}${article.cover_img}`" /> -->
         <div class="text" v-html="article.bericht"></div>
-    </div>
+    </article>
 </template>
 
 <script setup>
@@ -49,6 +52,14 @@ async function fetchData() {
         font-size: 2rem;
     }
 
+    .hero-img {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 400px;
+    }
+
     img {
         max-width: 100%;
     }
@@ -64,6 +75,7 @@ async function fetchData() {
         &:deep img {
             max-width: 100%;
             border-radius: 1rem;
+            max-height: 500px;
 
         }
     }

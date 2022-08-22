@@ -1,6 +1,6 @@
 <template>
     <Loader v-if="isLoading" />
-    <div v-if="articles && !isLoading" class="articles">
+    <template v-if="articles && !isLoading">
         <div class="all-articles">
             <div v-for="post in articles" :key="post.id" class="article">
                 <router-link :to="'/blog/' + post.id" class="post">
@@ -11,7 +11,7 @@
                 </router-link>
             </div>
         </div>
-    </div>
+    </template>
 </template>
 
 <script setup>
@@ -77,6 +77,10 @@ button {
             margin: .5rem 0;
         }
 
+        a {
+            width: 100%;
+        }
+
         a a {
             margin-top: auto;
             text-align: right;
@@ -116,9 +120,5 @@ button {
             border-radius: .5rem;
         }
     }
-}
-
-.articles img {
-    max-width: 100%;
 }
 </style>
