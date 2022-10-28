@@ -1,7 +1,5 @@
-# Vue 3 + Vite
+# Toverspreuken
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Van een drukke webwinkel en beurzen over gaan naar een blog. Het moest makkelijk te onderhouden zijn en het maken van blog post moest simpel zijn en zonder extra toeters en bellen.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+[Kijk hier voor meer informatie](https://jbosch.dev/projecten/toverspreuken)
